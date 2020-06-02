@@ -1,0 +1,32 @@
+type Tag {
+   _id: Long!
+   name: String!
+   questions: [Question] @relation(name: "TAGGED", direction: "IN")
+}
+
+type Answer {
+   _id: Long!
+   id: Int!
+   answers: [Question] @relation(name: "ANSWERS", direction: "OUT")
+   users: [User] @relation(name: "PROVIDED", direction: "IN")
+}
+
+type User {
+   _id: Long!
+   display_name: String!
+   id: Int!
+   reputation: Float
+   provided: [Answer] @relation(name: "PROVIDED", direction: "OUT")
+   asked: [Question] @relation(name: "ASKED", direction: "OUT")
+}
+
+type Question {
+   _id: Long!
+   favorite_count: Int!
+   id: Int!
+   share_link: String!
+   title: String!
+   tagged: [Tag] @relation(name: "TAGGED", direction: "OUT")
+   answers: [Answer] @relation(name: "ANSWERS", direction: "IN")
+   users: [User] @relation(name: "ASKED", direction: "IN")
+}
