@@ -25,8 +25,21 @@ type Question {
    favorite_count: Int!
    id: Int!
    share_link: String!
+   created: DateTime
    title: String!
    tagged: [Tag] @relation(name: "TAGGED", direction: "OUT")
    answers: [Answer] @relation(name: "ANSWERS", direction: "IN")
-   users: [User] @relation(name: "ASKED", direction: "IN")
+   user: User @relation(name: "ASKED", direction: "IN")
+}
+
+type Rating {
+  stars: Int
+  count: Int
+}
+type Query {
+  userCount: Int! @cypher(statement:"MATCH (u:User) RETURN count(*) as users")
+  ratingsCount: [Rating] @cypher(statement:"MATCH (u:User) WITH u.reputation/100*100 as stars, count(*) as count RETURN {stars:stars, count:count}")
+  }
+schema {
+  query: Query
 }

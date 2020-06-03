@@ -9,21 +9,18 @@ import gql from 'graphql-tag'
 import Title from './Title'
 
 const GET_RECENT_REVIEWS_QUERY = gql`
-  {
-    Review(first: 10, orderBy: date_desc) {
-      user {
-        name
-      }
-      business {
-        name
-      }
-      date {
-        formatted
-      }
-      text
-      stars
+{
+  Question(first: 10, orderBy: favorite_count_desc) {
+    user {
+      name: display_name
     }
+    title
+    date: created {
+      formatted
+    }
+    stars:favorite_count
   }
+}
 `
 
 export default function RecentReviews() {
@@ -33,24 +30,22 @@ export default function RecentReviews() {
 
   return (
     <React.Fragment>
-      <Title>Recent Reviews</Title>
+      <Title>Recent Questions</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Business Name</TableCell>
             <TableCell>User Name</TableCell>
-            <TableCell>Review Text</TableCell>
-            <TableCell align="right">Review Stars</TableCell>
+            <TableCell>Question Title</TableCell>
+            <TableCell align="right">Question Stars</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.Review.map((row) => (
+          {data.Question.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.date.formatted}</TableCell>
-              <TableCell>{row.business.name}</TableCell>
               <TableCell>{row.user.name}</TableCell>
-              <TableCell>{row.text}</TableCell>
+              <TableCell>{row.title}</TableCell>
               <TableCell align="right">{row.stars}</TableCell>
             </TableRow>
           ))}

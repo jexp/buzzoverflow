@@ -152,7 +152,7 @@ function UserList(props) {
                     {n.name}
                   </TableCell>
                   <TableCell>
-                    {n.reputation ? n.reputation.toFixed(2) : '-'}
+                    {n.reputation ? n.reputation : '-'}
                   </TableCell>
                 </TableRow>
               )
