@@ -40,6 +40,10 @@ type Query {
   userCount: Int! @cypher(statement:"MATCH (u:User) RETURN count(*) as users")
   ratingsCount: [Rating] @cypher(statement:"MATCH (u:User) WITH u.reputation/100*100 as stars, count(*) as count RETURN {stars:stars, count:count}")
   }
+  type Mutation {
+    upvote(id:Int!):Question @cypher(statement:"MATCH (q:Question {id:toInteger($id)}) SET q.favorite_count = q.favorite_count + 1 RETURN q")
+  }
 schema {
   query: Query
+  mutation: Mutation
 }

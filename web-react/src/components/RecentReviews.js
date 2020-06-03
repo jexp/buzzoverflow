@@ -1,16 +1,20 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import { useQuery } from '@apollo/react-hooks'
+import { useQuery, useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Title from './Title'
+
+const UPVOTE_MUTATION = gql`mutation upvote($id:Int!) { upvote(id:$id) { id, favorite_count } }`
 
 const GET_RECENT_REVIEWS_QUERY = gql`
 {
   Question(first: 10, orderBy: favorite_count_desc) {
+    id
     user {
       name: display_name
     }
@@ -24,6 +28,9 @@ const GET_RECENT_REVIEWS_QUERY = gql`
 `
 
 export default function RecentReviews() {
+
+  const [upvote, { result }] = useMutation(UPVOTE_MUTATION)
+
   const { loading, error, data } = useQuery(GET_RECENT_REVIEWS_QUERY)
   if (error) return <p>Error</p>
   if (loading) return <p>Loading</p>
@@ -47,6 +54,8 @@ export default function RecentReviews() {
               <TableCell>{row.user.name}</TableCell>
               <TableCell>{row.title}</TableCell>
               <TableCell align="right">{row.stars}</TableCell>
+              <TableCell align="right"><Button onClick={() => upvote({ variables: { id: row.id } })}>upvote</Button></TableCell>
+
             </TableRow>
           ))}
         </TableBody>

@@ -30,7 +30,7 @@ export default function RatingsChart() {
 
   return (
     <React.Fragment>
-      <Title>Ratings Distribution</Title>
+      <Title>Reputation Distribution</Title>
       <ResponsiveContainer>
         <BarChart
           data={data.ratingsCount}
