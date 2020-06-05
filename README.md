@@ -9,7 +9,7 @@ I recorded the session building it on https://Twitch.tv/neo4j_, here is [the You
 ## How did I build this?
 
 I originally created a Neo4j Sandbox and imported some [StackOverflow data using apoc.load.json](./load-so.cypher)
-from their [API](https://api.stackexchange.com/2.2/questions?pagesize=100&order=desc&sort=creation&tagged=graphql&site=stackoverflow&filter=!5-i6Zw8Y)4W7vpy91PMYsKM-k9yzEsSC1_Uxlf)
+from their [API](https://api.stackexchange.com/2.2/questions?pagesize=100&order=desc&sort=creation&tagged=graphql&site=stackoverflow&filter=!5-i6Zw8Y%294W7vpy91PMYsKM-k9yzEsSC1_Uxlf)
 
 The app is built with the [GRANDstack](https://grandstack.io) (GraphQL, React, Apollo, Neo4j Database) starter's 
 
