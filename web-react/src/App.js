@@ -36,7 +36,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <MUILink color="inherit" href="https://grandstack.io/">
-        Your GRANDstack App Name Here
+        Buzzoverflow made with GRANDstack
       </MUILink>{' '}
       {new Date().getFullYear()}
       {'.'}

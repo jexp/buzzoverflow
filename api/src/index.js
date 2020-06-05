@@ -52,8 +52,11 @@ const driver = neo4j.driver(
  * creating constraints or ensuring indexes are online
  *
  */
+
 const init = async (driver) => {
-  await initializeDatabase(driver)
+  /* does not work with read-only user
+     await initializeDatabase(driver)
+  */
 }
 
 /*

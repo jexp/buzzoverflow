@@ -21,7 +21,7 @@ const GET_DATA_QUERY = gql`
   }
 `
 
-export default function RatingsChart() {
+export default function ReputationChart() {
   const theme = useTheme()
 
   const { loading, error, data } = useQuery(GET_DATA_QUERY)

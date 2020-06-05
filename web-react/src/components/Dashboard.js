@@ -4,9 +4,9 @@ import { Grid, Paper } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 
-import RatingsChart from './RatingsChart'
+import ReputationChart from './ReputationChart'
 import UserCount from './UserCount'
-import RecentReviews from './RecentReviews'
+import RecentQuestions from './RecentQuestions'
 export default function Dashboard() {
   const theme = useTheme()
 
@@ -33,7 +33,7 @@ export default function Dashboard() {
         {/* Ratings Chart */}
         <Grid item xs={12} md={8} lg={7}>
           <Paper className={fixedHeightPaper}>
-            <RatingsChart />
+            <ReputationChart />
           </Paper>
         </Grid>
         {/* User Count */}
@@ -45,7 +45,7 @@ export default function Dashboard() {
         {/* Recent Reviews */}
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <RecentReviews />
+            <RecentQuestions />
           </Paper>
         </Grid>
       </Grid>

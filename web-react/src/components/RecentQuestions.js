@@ -9,25 +9,25 @@ import { useQuery, useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import Title from './Title'
 
-const UPVOTE_MUTATION = gql`mutation upvote($id:Int!) { upvote(id:$id) { id, favorite_count } }`
+const UPVOTE_MUTATION = gql`mutation upvote($id:Int!) { upvote(id:$id) { id, favorites } }`
 
 const GET_RECENT_REVIEWS_QUERY = gql`
 {
-  Question(first: 10, orderBy: favorite_count_desc) {
+  Question(first: 10, orderBy: favorites_desc) {
     id
     user {
       name: display_name
     }
     title
-    date: created {
+    date: createdAt {
       formatted
     }
-    stars:favorite_count
+    stars:favorites
   }
 }
 `
 
-export default function RecentReviews() {
+export default function RecentQuestions() {
 
   const [upvote, { result }] = useMutation(UPVOTE_MUTATION)
 
