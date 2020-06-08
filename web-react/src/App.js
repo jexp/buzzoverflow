@@ -35,8 +35,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <MUILink color="inherit" href="https://grandstack.io/">
-        Buzzoverflow made with GRANDstack
+      <MUILink color="inherit" href="https://github.com/jexp/buzzoverflow">Buzzoverflow</MUILink> made with 
+    <MUILink color="inherit" href="https://grandstack.io/">
+        GRANDstack
       </MUILink>{' '}
       {new Date().getFullYear()}
       {'.'}
