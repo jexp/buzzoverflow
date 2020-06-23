@@ -6,6 +6,8 @@ It is a newer version of the one explained on medium in [open-graphql](https://m
 
 I recorded the session building it on [Twitch](https://Twitch.tv/neo4j_), here is [the Youtube video](https://youtu.be/Quk1-LhG03E).
 
+![](img/buzzoverflow-dashboard.png)
+
 ## How did I build this?
 
 I originally created a Neo4j Sandbox and imported some [StackOverflow data using apoc.load.json](./load-so.cypher)
